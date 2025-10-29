@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Objeto singleton que configura y proporciona la instancia de Retrofit
- * para conectarse a la API de GitHubb
+ * para conectarse a la API de GitHub
  */
 object RetrofitClient {
 
