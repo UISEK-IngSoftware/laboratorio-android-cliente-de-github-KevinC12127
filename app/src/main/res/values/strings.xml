@@ -5,6 +5,6 @@
     <string name="repo_description">Descripción del repositorio</string>
     <string name="repo_lang">Lenguaje</string>
     <string name="text_lang">Kotlin</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
 </resources>
