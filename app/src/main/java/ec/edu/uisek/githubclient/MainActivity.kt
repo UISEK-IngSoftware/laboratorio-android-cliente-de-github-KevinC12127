@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding.newRepoFab.setOnClickListener {
             displayNewRepoForm()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
         fetchRepositories()
     }
 
