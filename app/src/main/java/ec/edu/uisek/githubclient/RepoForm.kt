@@ -33,7 +33,7 @@ class RepoForm : AppCompatActivity() {
         val repoName = binding.repoNameInput.text.toString()
 
         if (repoName.isBlank()) {
-            binding.repoNameInput.error = "El nombre del repositorio no puede contener espacios."
+            binding.repoNameInput.error = "El nombre del repositorio no puede contener espacios"
             return false
         }
         binding.repoNameInput.error = null
