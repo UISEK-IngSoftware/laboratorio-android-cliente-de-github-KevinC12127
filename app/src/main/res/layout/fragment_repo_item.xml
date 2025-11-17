@@ -1,89 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RepoItem">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
+
+        <!-- Columna Izquierda: Imagen y Botones -->
         <ImageView
             android:id="@+id/repo_owner_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher_foreground"
-            android:layout_gravity="center"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/repo_name"
-                    android:textStyle="bold"
-                    />
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Editar repositorio"
+            android:padding="4dp"
+            android:src="@drawable/ic_edit"
+            app:tint="?attr/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/repo_owner_image"
+            app:layout_constraintStart_toStartOf="@id/repo_owner_image"
+            app:layout_constraintEnd_toStartOf="@id/delete_button"
+            app:layout_constraintHorizontal_chainStyle="packed" />
 
-                <TextView
-                    android:id="@+id/repo_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/test_text"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar repositorio"
+            android:padding="4dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@android:color/holo_red_dark"
+            app:layout_constraintTop_toTopOf="@id/edit_button"
+            app:layout_constraintStart_toEndOf="@id/edit_button"
+            app:layout_constraintEnd_toEndOf="@id/repo_owner_image" />
 
-                <TextView
-                    android:layout_width="102dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/repo_description"
-                    android:textStyle="bold" />
+        <!-- Columna Derecha: Texto -->
+        <TextView
+            android:id="@+id/repo_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/repo_owner_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="nombre-del-repositorio-ejemplo" />
 
-                <TextView
-                    android:id="@+id/repo_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:text="@string/test_text" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/repo_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@id/repo_name"
+            app:layout_constraintEnd_toEndOf="@id/repo_name"
+            app:layout_constraintTop_toBottomOf="@id/repo_name"
+            tools:text="Esta es una descripción larga de un repositorio de ejemplo para ver cómo se ajusta el texto." />
 
-                <TextView
-                    android:layout_width="102dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/repo_lang"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/repo_lang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@id/repo_name"
+            app:layout_constraintEnd_toEndOf="@id/repo_name"
+            app:layout_constraintTop_toBottomOf="@id/repo_description"
+            tools:text="Kotlin" />
 
-                <TextView
-                    android:id="@+id/repo_lang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/text_lang"
-                    />
-            </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+</androidx.cardview.widget.CardView>
