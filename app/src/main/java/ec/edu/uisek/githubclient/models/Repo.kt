@@ -1,5 +1,6 @@
 package ec.edu.uisek.githubclient.models
 
+
 data class Repo(
     val id: Long,
     val name: String,
@@ -7,6 +8,8 @@ data class Repo(
     val language: String?,
     val owner: RepoOwner
 )
+
+
 
 
 data class RepoRequest (
