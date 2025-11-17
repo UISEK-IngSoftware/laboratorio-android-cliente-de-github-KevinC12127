@@ -20,7 +20,7 @@ object RetrofitClient {
     private const val BASE_URL = "https://api.github.com/"
 
     /**
-     * Interceptor que agrega el token de autenticación a todas las peticiones
+     * Interceptor que agrega el token de autenticación a todas las peticiones.
      */
     private val authInterceptor = Interceptor { chain ->
         val originalRequest = chain.request()
