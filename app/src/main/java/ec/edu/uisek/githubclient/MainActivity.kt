@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         apiService.deleteRepo(repo.owner.login, repo.name).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    showMessage("Repositorio eliminado con éxito")
+                    showMessage("Repositorio eliminado con éxito.")
                     fetchRepositories() // Refresh the list
                 } else {
                     handleApiError(response.code())
