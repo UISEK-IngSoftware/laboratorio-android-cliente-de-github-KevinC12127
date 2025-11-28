@@ -14,7 +14,7 @@ import retrofit2.Response
 
 class RepoForm : AppCompatActivity() {
     private lateinit var binding: ActivityRepoFormBinding
-    private val apiService: GithubApiService = RetrofitClient.gitHubApiService
+    private val apiService: GithubApiService? = RetrofitClient.getApiService()
 
     private var isEditMode = false
     private var originalRepoName: String? = null
@@ -72,7 +72,7 @@ class RepoForm : AppCompatActivity() {
     }
 
     private fun createRepository(repoRequest: RepoRequest) {
-        apiService.createRepo(repoRequest).enqueue(object : Callback<Repo> {
+        apiService?.createRepo(repoRequest)?.enqueue(object : Callback<Repo> {
             override fun onResponse(call: Call<Repo>, response: Response<Repo>) {
                 if (response.isSuccessful) {
                     showMessage("Repositorio creado con éxito")
@@ -93,7 +93,7 @@ class RepoForm : AppCompatActivity() {
             showMessage("Error: No se pudo identificar el repositorio a editar.")
             return
         }
-        apiService.updateRepo(owner!!, originalRepoName!!, repoRequest).enqueue(object: Callback<Repo>{
+        apiService?.updateRepo(owner!!, originalRepoName!!, repoRequest)?.enqueue(object: Callback<Repo>{
             override fun onResponse(call: Call<Repo>, response: Response<Repo>) {
                 if(response.isSuccessful) {
                     showMessage("Repositorio actualizado con éxito")
@@ -102,6 +102,7 @@ class RepoForm : AppCompatActivity() {
                     showMessage("Error al actualizar: ${response.code()} - ${response.errorBody()?.string()}")
                 }
             }
+
             override fun onFailure(call: Call<Repo>, t: Throwable) {
                 showMessage("Fallo al actualizar el repositorio: ${t.message}")
             }

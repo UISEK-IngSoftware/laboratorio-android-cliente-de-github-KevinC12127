@@ -1,6 +1,7 @@
 package ec.edu.uisek.githubclient.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Repo(
     val id: Long,
@@ -10,4 +11,4 @@ data class Repo(
     @SerializedName("private")
     val isPrivate: Boolean,
     val owner: RepoOwner // Contiene al dueño
-)
+) : Serializable
